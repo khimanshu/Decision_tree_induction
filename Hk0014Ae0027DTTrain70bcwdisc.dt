@@ -1,0 +1,229 @@
+Attribute name is Clump_Thickness
+Attribute name is Uniformity_of_Cell_Size
+Attribute name is Uniformity_of_Cell_Shape
+Attribute name is Marginal_Adhesion
+Attribute name is Single_Epithelial_Cell_Size
+Attribute name is Bare_Nuclei
+Attribute name is Bland_Chromatin
+Attribute name is Normal_Nucleoli
+Attribute name is Mitoses
+Attribute name is class
+Mitoses 0
+	| Normal_Nucleoli 0
+	| 	| Single_Epithelial_Cell_Size 0
+	| 	| 	| Uniformity_of_Cell_Size 0
+	| 	| 	| 	| CLASS  2
+	| 	| 	| Uniformity_of_Cell_Size 1
+	| 	| 	| 	| CLASS  2
+	| 	| 	| Uniformity_of_Cell_Size 2
+	| 	| 	| 	| Uniformity_of_Cell_Shape 2
+	| 	| 	| 	| 	| Bare_Nuclei 1
+	| 	| 	| 	| 	| 	| CLASS  2
+	| 	| 	| 	| 	| Bare_Nuclei 2
+	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| Single_Epithelial_Cell_Size 1
+	| 	| 	| Bland_Chromatin 0
+	| 	| 	| 	| CLASS  2
+	| 	| 	| Bland_Chromatin 1
+	| 	| 	| 	| Clump_Thickness 1
+	| 	| 	| 	| 	| Bare_Nuclei 0
+	| 	| 	| 	| 	| 	| CLASS  2
+	| 	| 	| 	| 	| Bare_Nuclei 2
+	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| Bland_Chromatin 2
+	| 	| 	| 	| CLASS  4
+	| 	| Single_Epithelial_Cell_Size 2
+	| 	| 	| Bland_Chromatin 0
+	| 	| 	| 	| CLASS  2
+	| 	| 	| Bland_Chromatin 1
+	| 	| 	| 	| Clump_Thickness 1
+	| 	| 	| 	| 	| Uniformity_of_Cell_Size 1
+	| 	| 	| 	| 	| 	| Bare_Nuclei 0
+	| 	| 	| 	| 	| 	| 	| CLASS  2
+	| 	| 	| 	| 	| 	| Bare_Nuclei 2
+	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| Bland_Chromatin 2
+	| 	| 	| 	| CLASS  4
+	| Normal_Nucleoli 1
+	| 	| Bare_Nuclei 0
+	| 	| 	| CLASS  2
+	| 	| Bare_Nuclei 1
+	| 	| 	| CLASS  2
+	| 	| Bare_Nuclei 2
+	| 	| 	| Bland_Chromatin 2
+	| 	| 	| 	| Clump_Thickness 2
+	| 	| 	| 	| 	| Marginal_Adhesion 2
+	| 	| 	| 	| 	| 	| Single_Epithelial_Cell_Size 2
+	| 	| 	| 	| 	| 	| 	| Uniformity_of_Cell_Shape 2
+	| 	| 	| 	| 	| 	| 	| 	| Uniformity_of_Cell_Size 2
+	| 	| 	| 	| 	| 	| 	| 	| 	| CLASS  2
+	| Normal_Nucleoli 2
+	| 	| Uniformity_of_Cell_Shape 0
+	| 	| 	| Uniformity_of_Cell_Size 0
+	| 	| 	| 	| Marginal_Adhesion 0
+	| 	| 	| 	| 	| Single_Epithelial_Cell_Size 0
+	| 	| 	| 	| 	| 	| Bare_Nuclei 0
+	| 	| 	| 	| 	| 	| 	| CLASS  2
+	| 	| 	| 	| 	| 	| Bare_Nuclei 1
+	| 	| 	| 	| 	| 	| 	| CLASS  2
+	| 	| 	| 	| 	| 	| Bare_Nuclei 2
+	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| Marginal_Adhesion 1
+	| 	| 	| 	| 	| CLASS  2
+	| 	| Uniformity_of_Cell_Shape 1
+	| 	| 	| Uniformity_of_Cell_Size 0
+	| 	| 	| 	| CLASS  2
+	| 	| 	| Uniformity_of_Cell_Size 1
+	| 	| 	| 	| Single_Epithelial_Cell_Size 0
+	| 	| 	| 	| 	| Clump_Thickness 1
+	| 	| 	| 	| 	| 	| Bland_Chromatin 1
+	| 	| 	| 	| 	| 	| 	| Bare_Nuclei 0
+	| 	| 	| 	| 	| 	| 	| 	| CLASS  2
+	| 	| 	| 	| 	| 	| 	| Bare_Nuclei 2
+	| 	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| 	| Bland_Chromatin 2
+	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| Clump_Thickness 2
+	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| Single_Epithelial_Cell_Size 1
+	| 	| 	| 	| 	| Clump_Thickness 0
+	| 	| 	| 	| 	| 	| CLASS  2
+	| 	| 	| 	| 	| Clump_Thickness 1
+	| 	| 	| 	| 	| 	| Bare_Nuclei 0
+	| 	| 	| 	| 	| 	| 	| CLASS  2
+	| 	| 	| 	| 	| 	| Bare_Nuclei 2
+	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| Uniformity_of_Cell_Size 2
+	| 	| 	| 	| CLASS  4
+	| 	| Uniformity_of_Cell_Shape 2
+	| 	| 	| Uniformity_of_Cell_Size 1
+	| 	| 	| 	| Bare_Nuclei 1
+	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| Bare_Nuclei 2
+	| 	| 	| 	| 	| Bland_Chromatin 0
+	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| Bland_Chromatin 1
+	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| Bland_Chromatin 2
+	| 	| 	| 	| 	| 	| Single_Epithelial_Cell_Size 2
+	| 	| 	| 	| 	| 	| 	| Clump_Thickness 0
+	| 	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| 	| 	| Clump_Thickness 1
+	| 	| 	| 	| 	| 	| 	| 	| Marginal_Adhesion 0
+	| 	| 	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| 	| 	| 	| Marginal_Adhesion 1
+	| 	| 	| 	| 	| 	| 	| 	| 	| CLASS  2
+	| 	| 	| Uniformity_of_Cell_Size 2
+	| 	| 	| 	| Bland_Chromatin 0
+	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| Bland_Chromatin 1
+	| 	| 	| 	| 	| Single_Epithelial_Cell_Size 0
+	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| Single_Epithelial_Cell_Size 1
+	| 	| 	| 	| 	| 	| Bare_Nuclei 1
+	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| 	| Bare_Nuclei 2
+	| 	| 	| 	| 	| 	| 	| CLASS  2
+	| 	| 	| 	| 	| Single_Epithelial_Cell_Size 2
+	| 	| 	| 	| 	| 	| Bare_Nuclei 0
+	| 	| 	| 	| 	| 	| 	| Marginal_Adhesion 0
+	| 	| 	| 	| 	| 	| 	| 	| CLASS  2
+	| 	| 	| 	| 	| 	| 	| Marginal_Adhesion 2
+	| 	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| 	| Bare_Nuclei 2
+	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| Bland_Chromatin 2
+	| 	| 	| 	| 	| Marginal_Adhesion 0
+	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| Marginal_Adhesion 1
+	| 	| 	| 	| 	| 	| Single_Epithelial_Cell_Size 1
+	| 	| 	| 	| 	| 	| 	| Clump_Thickness 2
+	| 	| 	| 	| 	| 	| 	| 	| Bare_Nuclei 0
+	| 	| 	| 	| 	| 	| 	| 	| 	| CLASS  2
+	| 	| 	| 	| 	| 	| 	| 	| Bare_Nuclei 2
+	| 	| 	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| 	| Single_Epithelial_Cell_Size 2
+	| 	| 	| 	| 	| 	| 	| Bare_Nuclei 1
+	| 	| 	| 	| 	| 	| 	| 	| Clump_Thickness 0
+	| 	| 	| 	| 	| 	| 	| 	| 	| CLASS  2
+	| 	| 	| 	| 	| 	| 	| 	| Clump_Thickness 2
+	| 	| 	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| 	| 	| Bare_Nuclei 2
+	| 	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| Marginal_Adhesion 2
+	| 	| 	| 	| 	| 	| CLASS  4
+Mitoses 2
+	| Normal_Nucleoli 0
+	| 	| Single_Epithelial_Cell_Size 0
+	| 	| 	| Bland_Chromatin 0
+	| 	| 	| 	| Marginal_Adhesion 0
+	| 	| 	| 	| 	| Bare_Nuclei 0
+	| 	| 	| 	| 	| 	| CLASS  2
+	| 	| 	| 	| 	| Bare_Nuclei 1
+	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| Bare_Nuclei 2
+	| 	| 	| 	| 	| 	| Uniformity_of_Cell_Shape 1
+	| 	| 	| 	| 	| 	| 	| Clump_Thickness 1
+	| 	| 	| 	| 	| 	| 	| 	| CLASS  2
+	| 	| 	| 	| 	| 	| 	| Clump_Thickness 2
+	| 	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| Marginal_Adhesion 1
+	| 	| 	| 	| 	| CLASS  2
+	| 	| 	| Bland_Chromatin 1
+	| 	| 	| 	| CLASS  2
+	| 	| Single_Epithelial_Cell_Size 1
+	| 	| 	| CLASS  4
+	| 	| Single_Epithelial_Cell_Size 2
+	| 	| 	| CLASS  4
+	| Normal_Nucleoli 1
+	| 	| Bland_Chromatin 1
+	| 	| 	| Bare_Nuclei 1
+	| 	| 	| 	| Uniformity_of_Cell_Size 1
+	| 	| 	| 	| 	| Clump_Thickness 1
+	| 	| 	| 	| 	| 	| CLASS  2
+	| 	| 	| 	| 	| Clump_Thickness 2
+	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| Bare_Nuclei 2
+	| 	| 	| 	| CLASS  4
+	| 	| Bland_Chromatin 2
+	| 	| 	| CLASS  4
+	| Normal_Nucleoli 2
+	| 	| Uniformity_of_Cell_Shape 0
+	| 	| 	| CLASS  2
+	| 	| Uniformity_of_Cell_Shape 1
+	| 	| 	| Bare_Nuclei 1
+	| 	| 	| 	| CLASS  4
+	| 	| 	| Bare_Nuclei 2
+	| 	| 	| 	| Clump_Thickness 2
+	| 	| 	| 	| 	| Bland_Chromatin 1
+	| 	| 	| 	| 	| 	| CLASS  2
+	| 	| 	| 	| 	| Bland_Chromatin 2
+	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| Uniformity_of_Cell_Shape 2
+	| 	| 	| Uniformity_of_Cell_Size 1
+	| 	| 	| 	| CLASS  4
+	| 	| 	| Uniformity_of_Cell_Size 2
+	| 	| 	| 	| Bare_Nuclei 0
+	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| Bare_Nuclei 1
+	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| Bare_Nuclei 2
+	| 	| 	| 	| 	| Single_Epithelial_Cell_Size 0
+	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| Single_Epithelial_Cell_Size 1
+	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| Single_Epithelial_Cell_Size 2
+	| 	| 	| 	| 	| 	| Bland_Chromatin 0
+	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| 	| Bland_Chromatin 1
+	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| 	| Bland_Chromatin 2
+	| 	| 	| 	| 	| 	| 	| Marginal_Adhesion 1
+	| 	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| 	| 	| Marginal_Adhesion 2
+	| 	| 	| 	| 	| 	| 	| 	| Clump_Thickness 0
+	| 	| 	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| 	| 	| 	| Clump_Thickness 1
+	| 	| 	| 	| 	| 	| 	| 	| 	| CLASS  4
+	| 	| 	| 	| 	| 	| 	| 	| Clump_Thickness 2
+	| 	| 	| 	| 	| 	| 	| 	| 	| CLASS  2

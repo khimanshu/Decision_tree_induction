@@ -1,0 +1,422 @@
+//CS-641 Data Mining
+//Himanshu Koyalkar and Aditya Edara
+//hk0014 and Ae0027
+//Spring 2017
+
+
+
+
+
+#include<iostream>
+#include<string.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<set>
+#include<vector>
+#include <math.h>
+#include<map>
+#include <fstream>
+#include<string>
+#include<list>
+#include <sstream>
+using namespace std;
+
+map<string,int> indexMap;
+void printVector(vector< vector<string> > newData);
+
+ofstream myfile;
+ofstream appfile;
+ofstream accfile;
+void setIndex(set<string> attrList)
+{
+	int count =0;
+	for(set<string> ::iterator it = attrList.begin(); it != attrList.end(); ++it)
+	{
+		indexMap[*it]=count;
+		count++;
+	}
+}
+
+vector< vector<string> > getData(vector< vector<string> > data, string attr, string attrVal)
+{
+	int attrIndex = indexMap[attr];
+	vector< vector<string> > newData;
+	for(vector< vector<string> >::iterator it = data.begin(); it != data.end(); ++it)
+	{
+		vector<string>::iterator jt = it->begin() + attrIndex;
+		if(attrVal.compare(*(jt))==0)
+			newData.push_back(*it);
+	}
+
+	return newData;
+}
+
+
+
+class tree{
+        public:
+        string key;
+	string val;
+        tree **children;
+	map<int,string> labels;
+	int numChild;
+	tree()
+	{
+		;
+	}
+        tree(string key1, int numChild1)
+        {
+		key = key1;
+		numChild = numChild1;
+		children = new tree*[numChild];
+		for(int i=0;i<numChild;i++)
+			children[i]= NULL;
+        }
+
+};
+
+string maximal(set<string> targetVals)
+{
+	map<string,int> freqMap;
+	for(set<string>::iterator it = targetVals.begin(); it != targetVals.end(); ++it)
+	{
+		string val = *it;
+		if(freqMap.find(val) != freqMap.end())
+			freqMap[val]++;
+		else
+			freqMap[val]=0;
+	}
+	  int max = -1;
+	  string maxAttr = "max";
+	  for (std::map<string,int>::iterator it=freqMap.begin(); it!=freqMap.end(); ++it)
+	  {
+		if(max<it->second)
+		{
+			max = it->second;
+			maxAttr = it->first;
+		}
+         }
+	return maxAttr;
+}
+
+
+string  choose_attribute(vector< vector<string> > data, set<string> attrList, string targetAttr)
+{
+	double maxProb = -10000;
+	string minAttr = "defaul";
+	int totalExamples = data.size();
+	attrList.erase(targetAttr);
+	for(set<string> ::iterator it = attrList.begin(); it != attrList.end(); ++it)
+	{
+		int currentIndex =  indexMap[*it];
+		int totalAExamples = data.size();
+		set <string> currentVals;
+		double totalProb = 0;
+		for(vector<vector<string> >::iterator jt = data.begin(); jt != data.end(); ++jt)
+		{
+			vector<string>::iterator kt = jt->begin() + currentIndex;
+			string val = *kt;
+			currentVals.insert(val);
+		}
+		for(set<string> ::iterator jt = currentVals.begin(); jt != currentVals.end(); ++jt)
+		{
+			vector< vector<string> > currentData = getData(data,*it,*jt);
+			int currentExamples = currentData.size();
+			double currentProb = (double) currentExamples/ (double) totalExamples;
+			double currentTerm = currentProb*log(currentProb);
+			totalProb = totalProb + currentTerm;
+		}
+		if(maxProb < totalProb)
+		{
+			maxProb = totalProb;
+			minAttr = *it;
+		}
+	}
+	return minAttr;
+}
+
+
+tree*  construct_tree(vector< vector<string> > data,  set<string> attrList, string targetAttr)
+{
+	int targetIndex =  indexMap[targetAttr];
+		//cout<<"targetIndex "<<targetIndex<<endl;
+	set <string> targetVals;
+	for(vector<vector<string> >::iterator it = data.begin(); it != data.end(); ++it)
+	{
+		vector<string>::iterator jt = it->begin() + targetIndex;
+		targetVals.insert(*jt);
+	}
+
+		//cout<<"before maximal "<<endl;
+	string maxVal= maximal(targetVals);
+	bool found =1;
+	for( int i=0;i<targetVals.size();i++)
+	for(set<string> ::iterator it = targetVals.begin(); it != targetVals.end(); ++it)
+		if(maxVal.compare(*it) != 0)
+		{
+			found = 0;
+			break;
+		}
+
+
+	if( found ==1 || data.size()==0 || attrList.size() <=1)
+	{
+		return new tree(maxVal,0);
+	}
+	else
+	{
+	//	cout<<"before best "<<endl;
+		string best = choose_attribute(data, attrList, targetAttr);
+	//	cout<<"best "<<best<<endl;
+		int bestIndex =  indexMap[best];
+		set <string> bestVals;
+		for(vector<vector<string> >::iterator it = data.begin(); it != data.end(); ++it)
+		{
+			vector<string>::iterator jt = it->begin() + bestIndex;
+			string val = *jt;
+			bestVals.insert(val);
+		}
+		tree* T = new tree(best,bestVals.size());
+		int childIndex =0;
+
+		for(set<string> ::iterator it = bestVals.begin(); it != bestVals.end(); ++it)
+		{
+			string val = *it;
+			attrList.erase(best);
+//			for(set<string> ::iterator it = attrList.begin(); it != attrList.end(); ++it)
+
+			tree* subTree = construct_tree(getData(data,best,val),   attrList,  targetAttr);
+		        T->children[childIndex] = subTree;
+			T->labels[childIndex]=val;
+		        childIndex++;
+
+		}
+
+		return T;
+
+
+	}
+
+}
+
+
+string  traverseTree(tree *T, vector<string> row)
+{
+	bool leaf =1;
+	int keyIndex = indexMap[T->key];
+	string rowVal = row[keyIndex];
+	//cout<<"root Key is "<<T->key<<" "<<keyIndex<<" "<<rowVal<<endl;
+	for(int i=0;i<T->numChild;i++)
+		if(T->children[i]!=NULL)
+		{
+			leaf =0;
+			break;
+		}
+	if(leaf == 1)
+		return T->key;
+	bool find=false;
+	for(int i=0;i<T->numChild;i++)
+		if((T->labels[i]).compare(rowVal)==0)
+		{
+			find=true;
+			return traverseTree(T->children[i],row);
+		}
+		if(find == false)
+			return row.back();
+
+}
+
+void printLeaves(tree *T,int depth)
+{
+	if(T==NULL)
+		return;
+	else if(T->numChild == 0)
+	{
+		for(int i=0;i<depth;i++)
+		{
+			cout<<"\t| ";
+			myfile<<"\t| ";
+		}
+		cout<<"CLASS  "<<T->key<<endl;
+		myfile<<"CLASS  "<<T->key<<endl;
+		return;
+	}
+	else
+	{
+	//	cout<<"root is "<<T->key<<"Num of Children "<<T->numChild<<endl;
+		for(int i=0;i<T->numChild;i++)
+
+		{	for(int j=0;j<depth;j++)
+			{
+				cout<<"\t| ";
+				myfile<<"\t| ";
+			}
+			cout<<T->key<<" "<<T->labels[i]<<endl;
+			myfile<<T->key<<" "<<T->labels[i]<<endl;
+
+
+			printLeaves(T->children[i],depth+1);
+
+		}
+	}
+}
+
+void printVector( vector<string>  newData)
+{
+	 for(vector<string> ::iterator it = newData.begin(); it != newData.end(); ++it)
+        {
+
+                        cout << *it<<" ";
+	}
+                cout << endl;
+}
+
+void printVector_File( vector<string>  newData)
+{
+	 for(vector<string> ::iterator it = newData.begin(); it != newData.end(); ++it)
+        {
+
+                        appfile << *it<<" ";
+	}
+            //    appfile << endl;
+}
+
+
+int main(int ac,char** argv)
+{
+	char* filename = argv[2];
+	int percentage = atoi(argv[6]);
+	int bpercentage = percentage / 10;
+	bpercentage = 9 - bpercentage;
+	//string perstring = to_string(bpercentage);
+	ostringstream ss;
+	ss << argv[6];
+	string s1="Hk0014Ae0027DTTrain"+ss.str()+"bcwdisc.dt";
+	string s2="Hk0014Ae00027DTApply"+ss.str()+"bcwdisc.arff";
+	string s3="Hk0014Ae0027DTAccuracy"+ss.str()+"bcwdisc.arff";
+	char* c1 = new char[s1.length() + 1];
+	char* c2 = new char[s2.length() + 1];
+	char* c3 = new char[s3.length() + 1];
+	strcpy(c1, s1.c_str());
+	strcpy(c2, s2.c_str());
+	strcpy(c3, s3.c_str());
+	//cout<<"Enter the name of the file to read data from\n";
+	//cin>>filename;
+	FILE * fp = fopen(filename,"r");
+	 myfile.open (c1);
+	 appfile.open(c2);
+	 accfile.open(c3);
+
+	vector< vector<string> > trainData,testData,Data;
+	char str[100],rel[100],attr[100];
+	if(fp !=NULL)
+		fscanf(fp,"%s",str);
+	int numAttr =0;
+	set<string> attrList;
+	int attrIndex = 0;
+	while(1)
+	{
+		fscanf(fp,"%s",str);
+		if(strcmp(str,"@relation")==0)
+		{
+			fscanf(fp,"%s",str);
+			cout<<"Relation name is "<<str<<endl;
+		}
+		else	if(strcmp(str,"@attribute")==0)
+		{
+			fscanf(fp,"%s",str);
+			numAttr++;
+			attrList.insert(str);
+			cout<<"Attribute name is "<<str<<endl;
+			myfile<<"Attribute name is "<<str<<endl;
+			appfile<<"Attribute name is "<<str<<endl;
+			indexMap[str] =attrIndex;
+			attrIndex++;
+		}
+		else	if(strcmp(str,"@data")==0)
+				break;
+	}
+	appfile<<"Attribute name is dtClass real"<<endl;
+//	setIndex(attrList);
+	bool eof = false;
+	int numRecords =0;
+	while(1)
+	{
+		vector<string> row;
+		for(int i=0;i<numAttr;i++)
+		{
+
+			if(fscanf(fp,"%s",str)==EOF)
+				{
+					eof = true;
+					break;
+				}
+			row.push_back(str);
+		}
+			if( eof == true)
+				break;
+		Data.push_back(row);
+		numRecords++;
+		//cout<<"Number of records is "<<numRecords<<"\n";
+	}
+
+	for(int i=0;i<numRecords;i++)
+	{
+		vector<string> row = Data.at(i);
+		int randNum = (rand() % numRecords )%10;
+		//if( randNum ==0 || randNum ==7 || randNum ==9)
+		if( randNum <=bpercentage)
+			testData.push_back(row);
+		else
+			{
+				trainData.push_back(row);
+			//	printVector(row);
+			}
+	}
+		tree* T = construct_tree(trainData,attrList,"class");
+		printLeaves(T,0);
+	cout<<"Size of Train Data is "<<trainData.size()<<endl;
+	int TP=0,TN=0,FP=0,FN=0;
+	for(int i=0;i<Data.size();i++)
+	{
+		vector<string> row = Data.at(i);
+		//printVector(row);
+		string actual = row.back();
+		printVector_File(row);
+		row.pop_back();
+		string predicted = traverseTree(T,row);
+	//	printVector(row);
+		if(actual.compare(predicted)==0)
+		{
+			if(actual.compare("2")==0)
+				TP++;
+			else
+				TN++;
+		}
+		else
+		{
+			if(actual.compare("2")==0 &&  predicted.compare("4")==0)
+				FN++;
+			else
+				FP++;
+		}
+
+
+
+
+		appfile<<predicted<<endl;;
+	}
+
+	double accuracy = (TP+TN)*1.0/(TP+FP+TN+FN);
+
+	accfile<<"Confusion Matrix is "<<endl;
+	accfile<<"\t "<<"2\t "<<"4"<<endl;
+	accfile<<"2\t"<<TP<<"\t"<<FN<<endl;
+	accfile<<"4\t"<<FP<<"\t"<<TN<<endl;
+	accfile<<"\n Accuracy is "<<accuracy<<endl;
+
+
+
+	myfile.close();
+}
+

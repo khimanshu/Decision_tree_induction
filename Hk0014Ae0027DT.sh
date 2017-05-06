@@ -1,0 +1,1 @@
+g++ Hk0014Ae0027DT.cpp -o Hk0014Ae0027DT

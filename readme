@@ -1,0 +1,7 @@
+1)Run the Script file Hk0014Ae0027DT.sh using the command
+	sh Hk0014Ae0027DT.sh
+
+2)You will then get the excecutable file Hk0014Ae0027DT
+
+3)Run the excecutable file by using the command
+	./Hk0014Ae0027DT -i bcwdisc.arff -c class -T <value between 1 and 100>
